@@ -1,0 +1,14 @@
+[Unit]
+Description=hist_answered
+After=multi-user.target
+
+[Service]
+Type=simple
+EnvironmentFile=/var/lib/hist_answered/data/variables.env
+ExecStart=/usr/bin/python3.6 /var/lib/hist_answered/service.py
+User=root
+WorkingDirectory=/var/lib/hist_answered
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
