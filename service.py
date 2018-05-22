@@ -1,12 +1,13 @@
 """service file"""
+import sys
+sys.path.append("/home/ubuntu/.local/lib/python3.6/site-packages/")
 import os
-
 import praw
 
 try:
-    from hist_ans_bot import HistAnsBot
+    from hist_answered import HistAnsBot
 except ModuleNotFoundError:
-    from .hist_ans_bot import HistAnsBot
+    from .hist_answered import HistAnsBot
 
 def main() -> None:
     """main service function"""
@@ -20,8 +21,8 @@ def main() -> None:
 
     bot: HistAnsBot = HistAnsBot(
         reddit,
-        os.environ["subreddit"],
-        os.environ["delay"] * 60 # delay in minutes
+        os.environ["hist_subreddit"],
+        int(os.environ["hist_delay"]) * 60 # delay in minutes
     )
 
     while True:
