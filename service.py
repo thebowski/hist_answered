@@ -21,7 +21,6 @@ def main() -> None:
 
     bot: HistAnsBot = HistAnsBot(
         reddit,
-        os.environ["hist_subreddit"],
         int(os.environ["hist_delay"]) * 60 # delay in minutes
     )
 
